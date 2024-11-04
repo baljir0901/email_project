@@ -1,47 +1,64 @@
-body {
-    font-family: Arial, sans-serif;
+/* Base Styles */
+* {
     margin: 0;
-    padding: 20px;
-    background-color: #f0f2f5;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
 }
 
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-    background-color: white;
+    max-width: 1000px;
+    margin: 2rem auto;
     padding: 2rem;
-    border-radius: 10px;
+    background-color: #fff;
+    border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* Headers */
 h1 {
-    color: #1a73e8;
     text-align: center;
+    color: #1a1a1a;
     margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #eee;
 }
 
 h2 {
-    color: #1557b0;
-    margin-top: 2rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid #e0e0e0;
+    color: #2c3e50;
+    margin: 1.5rem 0 1rem;
+    padding-left: 0.5rem;
+    border-left: 4px solid #3498db;
 }
 
+/* Form Sections */
 section {
     margin-bottom: 2rem;
+    padding: 1.5rem;
+    background-color: #fafafa;
+    border-radius: 6px;
+    border: 1px solid #eee;
 }
 
+/* Form Groups */
 .form-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
-label {
+.form-group label {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: bold;
-    color: #333;
+    color: #444;
 }
 
+/* Input Fields */
 input[type="text"],
 input[type="email"],
 input[type="tel"],
@@ -50,62 +67,76 @@ input[type="date"],
 select,
 textarea {
     width: 100%;
-    padding: 8px;
-    border: 2px solid #e0e0e0;
-    border-radius: 5px;
-    font-size: 16px;
-    transition: border-color 0.3s;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
 }
 
-input:focus,
-select:focus,
-textarea:focus {
-    outline: none;
-    border-color: #1a73e8;
+/* Name Fields */
+.name-fields {
+    display: flex;
+    gap: 1rem;
 }
 
-textarea {
-    height: 100px;
-    resize: vertical;
+.name-fields input {
+    flex: 1;
 }
 
+/* Radio and Checkbox Groups */
 .radio-group,
 .checkbox-group {
     display: flex;
-    gap: 1rem;
+    gap: 2rem;
     align-items: center;
 }
 
-.radio-group label,
-.checkbox-group label {
-    display: inline;
-    margin: 0;
-}
-
+/* Buttons */
 button {
-    background-color: #1a73e8;
-    color: white;
+    padding: 0.8rem 1.5rem;
     border: none;
-    padding: 12px 24px;
-    border-radius: 5px;
+    border-radius: 4px;
+    background-color: #3498db;
+    color: white;
     cursor: pointer;
-    font-size: 16px;
-    width: 100%;
-    transition: background-color 0.3s;
-    margin-top: 2rem;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #1557b0;
+    background-color: #2980b9;
 }
 
-button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
+.submit-button {
+    display: block;
+    width: 100%;
+    margin-top: 2rem;
+    padding: 1rem;
+    font-size: 1.1rem;
 }
 
-#status {
-    margin-top: 1rem;
-    text-align: center;
-    color: #666;
+/* Dynamic Entry Styles */
+.education-entry,
+.work-entry,
+.intern-history-entry,
+.family-member-entry,
+.home-country-entry {
+    position: relative;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+}
+
+.remove-button {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    padding: 0.3rem 0.6rem;
+    background-color: #e74c3c;
+}
+
+.remove-button:hover {
+    background-color: #c0392b;
 }
