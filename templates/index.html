@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>履歴書フォーム</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>履歴書フォーム</h1>
+        <form id="cvForm" onsubmit="submitForm(event)">
+            <!-- Basic Information -->
+            <section>
+                <h2>基本情報</h2>
+                <div class="form-group">
+                    <label for="furigana">フリガナ:</label>
+                    <input type="text" id="furigana" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="romaji">ローマ字:</label>
+                    <input type="text" id="romaji" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="birthdate">生年月日:</label>
+                    <input type="date" id="birthdate" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="age">年齢:</label>
+                    <input type="number" id="age" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="gender">性別:</label>
+                    <select id="gender" required>
+                        <option value="">選択してください</option>
+                        <option value="男性">男性</option>
+                        <option value="女性">女性</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="nationality">国籍:</label>
+                    <input type="text" id="nationality" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="nearest_station">最寄り駅:</label>
+                    <input type="text" id="nearest_station">
+                </div>
+            </section>
+
+            <!-- Contact Information -->
+            <section>
+                <h2>連絡先</h2>
+                <div class="form-group">
+                    <label for="address">現住所:</label>
+                    <textarea id="address" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">電話番号:</label>
+                    <input type="tel" id="phone" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">メール:</label>
+                    <input type="email" id="email" required>
+                </div>
+            </section>
+
+            <!-- Education -->
+            <section>
+                <h2>学歴</h2>
+                <div class="form-group">
+                    <label for="education">学歴詳細:</label>
+                    <textarea id="education" placeholder="例：2020年3月 ○○大学 ○○学部 卒業" required></textarea>
+                </div>
+            </section>
+
+            <!-- Work History -->
+            <section>
+                <h2>職歴</h2>
+                <div class="form-group">
+                    <label for="work_history">職歴詳細:</label>
+                    <textarea id="work_history" placeholder="例：2020年4月～2023年3月 ○○株式会社"></textarea>
+                </div>
+            </section>
+
+            <!-- Qualifications -->
+            <section>
+                <h2>資格・免許</h2>
+                <div class="form-group">
+                    <label>運転免許:</label>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="driving_license">
+                        <label for="driving_license">日本の運転免許</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="other_qualifications">その他の資格:</label>
+                    <textarea id="other_qualifications"></textarea>
+                </div>
+            </section>
+
+            <!-- Family in Japan -->
+            <section>
+                <h2>日本在住の親族</h2>
+                <div class="form-group">
+                    <label>親族の有無:</label>
+                    <div class="radio-group">
+                        <input type="radio" name="family_in_japan" value="有" id="family_yes">
+                        <label for="family_yes">有</label>
+                        <input type="radio" name="family_in_japan" value="無" id="family_no">
+                        <label for="family_no">無</label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Emergency Contact -->
+            <section>
+                <h2>緊急連絡先</h2>
+                <div class="form-group">
+                    <label for="emergency_contact">緊急連絡先詳細:</label>
+                    <textarea id="emergency_contact" placeholder="氏名、続柄、連絡先"></textarea>
+                </div>
+            </section>
+
+            <!-- Health -->
+            <section>
+                <h2>健康状態</h2>
+                <div class="form-group">
+                    <label for="health_conditions">既往症:</label>
+                    <textarea id="health_conditions" placeholder="ある場合は記入"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="allergies">アレルギー:</label>
+                    <textarea id="allergies" placeholder="ある場合は記入"></textarea>
+                </div>
+            </section>
+
+            <!-- Additional Information -->
+            <section>
+                <h2>その他</h2>
+                <div class="form-group">
+                    <label>喫煙:</label>
+                    <div class="radio-group">
+                        <input type="radio" name="smoking" value="する" id="smoke_yes">
+                        <label for="smoke_yes">する</label>
+                        <input type="radio" name="smoking" value="しない" id="smoke_no">
+                        <label for="smoke_no">しない</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>飲酒:</label>
+                    <div class="radio-group">
+                        <input type="radio" name="drinking" value="する" id="drink_yes">
+                        <label for="drink_yes">する</label>
+                        <input type="radio" name="drinking" value="しない" id="drink_no">
+                        <label for="drink_no">しない</label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Physical Information -->
+            <section>
+                <h2>身体情報</h2>
+                <div class="form-group">
+                    <label for="height">身長 (cm):</label>
+                    <input type="number" id="height" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="weight">体重 (kg):</label>
+                    <input type="number" id="weight" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="shoe_size">靴のサイズ (cm):</label>
+                    <input type="number" id="shoe_size" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="blood_type">血液型:</label>
+                    <select id="blood_type" required>
+                        <option value="">選択してください</option>
+                        <option value="A">A型</option>
+                        <option value="B">B型</option>
+                        <option value="O">O型</option>
+                        <option value="AB">AB型</option>
+                    </select>
+                </div>
+            </section>
+
+            <button type="submit">送信</button>
+        </form>
+        <p id="status"></p>
+    </div>
+
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+            
+            const formData = {
+                // Basic Information
+                furigana: document.getElementById('furigana').value,
+                romaji: document.getElementById('romaji').value,
+                birthdate: document.getElementById('birthdate').value,
+                age: document.getElementById('age').value,
+                gender: document.getElementById('gender').value,
+                nationality: document.getElementById('nationality').value,
+                nearest_station: document.getElementById('nearest_station').value,
+                
+                // Contact Information
+                address: document.getElementById('address').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                
+                // Education
+                education: document.getElementById('education').value,
+                
+                // Work History
+                work_history: document.getElementById('work_history').value,
+                
+                // Qualifications
+                driving_license: document.getElementById('driving_license').checked,
+                other_qualifications: document.getElementById('other_qualifications').value,
+                
+                // Family in Japan
+                family_in_japan: document.querySelector('input[name="family_in_japan"]:checked')?.value,
+                
+                // Emergency Contact
+                emergency_contact: document.getElementById('emergency_contact').value,
+                
+                // Health
+                health_conditions: document.getElementById('health_conditions').value,
+                allergies: document.getElementById('allergies').value,
+                
+                // Additional Information
+                smoking: document.querySelector('input[name="smoking"]:checked')?.value,
+                drinking: document.querySelector('input[name="drinking"]:checked')?.value,
+                
+                // Physical Information
+                height: document.getElementById('height').value,
+                weight: document.getElementById('weight').value,
+                shoe_size: document.getElementById('shoe_size').value,
+                blood_type: document.getElementById('blood_type').value
+            };
+
+            const button = document.querySelector('button');
+            const status = document.getElementById('status');
+            
+            button.disabled = true;
+            status.textContent = '送信中...';
+            
+            fetch('/submit-form', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                status.textContent = data.message;
+                button.disabled = false;
+                if (data.status === 'success') {
+                    document.getElementById('cvForm').reset();
+                }
+            })
+            .catch(error => {
+                status.textContent = 'エラーが発生しました';
+                button.disabled = false;
+            });
+        }
+    </script>
+</body>
+</html>
